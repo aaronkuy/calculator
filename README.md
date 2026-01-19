@@ -1,4 +1,4 @@
-# Modern Glassmorphism Calculator
+# Calculator
 
 ## Description
 A sleek and functional calculator application designed with a professional "Glassmorphism" aesthetic. The app provides a reliable interface for basic arithmetic operations including addition, subtraction, multiplication, and division. It features real-time display updates and robust error handling to ensure a smooth user experience.
