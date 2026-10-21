@@ -1,97 +1,139 @@
+:root {
+    --bg: #f4f5f9;
+    --card: #ffffff;
+    --ink: #14161c;
+    --muted: #6b7280;
+    --line: #e4e6ee;
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+    --accent-soft: #eef0ff;
+    --danger: #e5484d;
+    --danger-soft: #fff1f1;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(20, 22, 28, 0.04), 0 8px 24px rgba(20, 22, 28, 0.06);
+}
+
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
+    margin: 0;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #1e1e2f, #2d2d44);
-    color: #ffffff;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--ink);
+    background:
+        radial-gradient(1100px 480px at 50% -140px, #e4e6ff 0%, rgba(228, 230, 255, 0) 70%),
+        var(--bg);
 }
 
+button {
+    font: inherit;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 24px 20px 32px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.footer a {
+    color: inherit;
+    text-underline-offset: 3px;
+}
+
+.footer a:hover {
+    color: var(--ink);
+}
+
+/* Calculator */
+
 #calculator {
-    background-color: #232333;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    width: 350px;
+    width: min(100% - 32px, 340px);
+    margin: auto;
+    padding: 20px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
 }
 
 #display {
     width: 100%;
-    height: 70px;
-    font-size: 2.5rem;
-    text-align: right;
-    border: none;
-    background-color: #1a1a26;
-    color: #00ff88;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    height: 78px;
+    margin-bottom: 16px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 14px;
     outline: none;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    background: #f4f5f9;
+    color: var(--ink);
+    font: inherit;
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
 }
 
 #keys {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 10px;
 }
 
-button {
-    height: 65px;
-    border: none;
-    border-radius: 12px;
-    font-size: 1.5rem;
-    font-weight: bold;
+#keys button {
+    height: 60px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #ffffff;
+    color: var(--ink);
+    font-size: 1.35rem;
+    font-weight: 600;
     cursor: pointer;
-    background-color: #32324d;
-    color: white;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 0 #1a1a26;
+    transition: background 0.15s ease, transform 0.08s ease;
 }
 
-button:hover {
-    background-color: #414163;
-    transform: translateY(-2px);
+#keys button:hover {
+    background: #f6f7fb;
 }
 
-button:active {
-    transform: translateY(2px);
-    box-shadow: none;
+#keys button:active {
+    transform: scale(0.97);
 }
 
-button:nth-child(4n),
-button:nth-child(1) {
-    background-color: #4a4ae6;
-    color: white;
+/* Operators: + - * / */
+#keys button:nth-child(4n + 1) {
+    border-color: transparent;
+    background: var(--accent-soft);
+    color: var(--accent);
 }
 
-button:nth-child(4n):hover,
-button:nth-child(1):hover {
-    background-color: #5c5cee;
+#keys button:nth-child(4n + 1):hover {
+    background: #e2e5ff;
 }
 
-button[onclick="calculate()"] {
-    background: linear-gradient(135deg, #00ff88, #00bd65);
-    color: #1a1a26;
-    grid-column: span 1;
+#keys button[onclick="calculate()"] {
+    border-color: transparent;
+    background: var(--accent);
+    color: #ffffff;
 }
 
-button[onclick="calculate()"]:hover {
-    filter: brightness(1.1);
+#keys button[onclick="calculate()"]:hover {
+    background: var(--accent-hover);
 }
 
-button[onclick="clearDisplay()"] {
-    background-color: #ff4d4d;
-    color: white;
+#keys button[onclick="clearDisplay()"] {
+    grid-column: 1 / -1;
+    border-color: transparent;
+    background: var(--danger-soft);
+    color: var(--danger);
 }
 
-button[onclick="clearDisplay()"]:hover {
-    background-color: #ff6666;
+#keys button[onclick="clearDisplay()"]:hover {
+    background: #ffe4e4;
 }
