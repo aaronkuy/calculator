@@ -110,35 +110,33 @@ button {
     transform: scale(0.97);
 }
 
-/* Operators sit in the first column. The "C" key is also a first-column
-   child, so its rule further down has to override this one. */
-#keys button:nth-child(4n + 1) {
+#keys .key--operator {
     border-color: transparent;
     background: var(--accent-soft);
     color: var(--accent);
 }
 
-#keys button:nth-child(4n + 1):hover {
+#keys .key--operator:hover {
     background: #e2e5ff;
 }
 
-#keys button[onclick="calculate()"] {
+#keys .key--equals {
     border-color: transparent;
     background: var(--accent);
     color: #ffffff;
 }
 
-#keys button[onclick="calculate()"]:hover {
+#keys .key--equals:hover {
     background: var(--accent-hover);
 }
 
-#keys button[onclick="clearDisplay()"] {
+#keys .key--clear {
     grid-column: 1 / -1;
     border-color: transparent;
     background: var(--danger-soft);
     color: var(--danger);
 }
 
-#keys button[onclick="clearDisplay()"]:hover {
+#keys .key--clear:hover {
     background: #ffe4e4;
 }
