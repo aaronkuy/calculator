@@ -46,7 +46,11 @@ jobs:
           install -d -m 700 ~/.ssh
           printf '%s\n' "$MIRROR_KEY" > ~/.ssh/mirror_key
           chmod 600 ~/.ssh/mirror_key
+          # Fetch GitLab's host key and refuse it unless it matches the
+          # fingerprint published at docs.gitlab.com (SSH host keys).
           ssh-keyscan -t ed25519 gitlab.com > ~/.ssh/known_hosts
+          ssh-keygen -lf ~/.ssh/known_hosts \
+            | grep -q 'SHA256:eUXGGm1YGsMAS7vkcx6JOJdOGHPem5gQp4taiCfCLB8'
           export GIT_SSH_COMMAND="ssh -i ~/.ssh/mirror_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes"
           # --force keeps the mirror identical even if a ref moved backwards;
           # --prune removes branches and tags that no longer exist on GitHub.
