@@ -84,6 +84,12 @@ button {
     font-variant-numeric: tabular-nums;
 }
 
+/* The display can receive focus with Tab, so it needs a visible focus ring. */
+#display:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 #keys {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
