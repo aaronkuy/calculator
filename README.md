@@ -29,7 +29,7 @@ cd calculator
 open index.html        # macOS; on Linux use xdg-open, on Windows start
 ```
 
-Run the tests (Node 20 or newer):
+Run the tests (needs Node.js, no install step; checked with Node 24):
 
 ```bash
 node --test
