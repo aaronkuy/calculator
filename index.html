@@ -5,41 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
-
+    <!-- Classic scripts on purpose: modules are blocked under file://. -->
+    <script src="calculator.js" defer></script>
+    <script src="index.js" defer></script>
 </head>
 <body>
 
 <div id="calculator">
-    <input id="display" readonly>
+    <input id="display" type="text" readonly aria-label="Display">
     <div id="keys">
-        <button onclick="appendToDisplay('+')">+</button>
-        <button onclick="appendToDisplay('7')">7</button>
-        <button onclick="appendToDisplay('8')">8</button>
-        <button onclick="appendToDisplay('9')">9</button>
-        <button onclick="appendToDisplay('-')">-</button>
-        <button onclick="appendToDisplay('4')">4</button>
-        <button onclick="appendToDisplay('5')">5</button>
-        <button onclick="appendToDisplay('6')">6</button>
-        <button onclick="appendToDisplay('*')">*</button>
-        <button onclick="appendToDisplay('1')">1</button>
-        <button onclick="appendToDisplay('2')">2</button>
-        <button onclick="appendToDisplay('3')">3</button>
-        <button onclick="appendToDisplay('/')">/</button>
-        <button onclick="appendToDisplay('0')">0</button>
-        <button onclick="appendToDisplay('.')">.</button>
-        <button onclick="calculate()">=</button>
-        <button onclick="clearDisplay()">C</button>
-
-
-
-
-
+        <button type="button" class="key key--operator" data-key="+" aria-label="plus">+</button>
+        <button type="button" class="key" data-key="7">7</button>
+        <button type="button" class="key" data-key="8">8</button>
+        <button type="button" class="key" data-key="9">9</button>
+        <button type="button" class="key key--operator" data-key="-" aria-label="minus">-</button>
+        <button type="button" class="key" data-key="4">4</button>
+        <button type="button" class="key" data-key="5">5</button>
+        <button type="button" class="key" data-key="6">6</button>
+        <button type="button" class="key key--operator" data-key="*" aria-label="multiply">*</button>
+        <button type="button" class="key" data-key="1">1</button>
+        <button type="button" class="key" data-key="2">2</button>
+        <button type="button" class="key" data-key="3">3</button>
+        <button type="button" class="key key--operator" data-key="/" aria-label="divide">/</button>
+        <button type="button" class="key" data-key="0">0</button>
+        <button type="button" class="key" data-key="." aria-label="decimal point">.</button>
+        <button type="button" class="key key--equals" data-action="equals" aria-label="equals">=</button>
+        <button type="button" class="key key--clear" data-action="clear" aria-label="clear">C</button>
     </div>
 </div>
 <footer class="footer">
-    Built by <a href="https://github.com/aaronkuy">Aaron Kuyucu</a> · <a href="https://github.com/aaronkuy/calculator">Source on GitHub</a>
+    <a href="https://github.com/aaronkuy">Aaron Kuyucu</a> · Based on a <a href="https://www.youtube.com/watch?v=I5kj-YsmWjM">Bro Code tutorial</a> · <a href="https://github.com/aaronkuy/calculator">Source on GitHub</a>
 </footer>
-<script src="index.js"></script>
 
 </body>
 </html>
