@@ -41,7 +41,7 @@ node --test
 - `index.js` keeps the expression and a mode (`typing`, `result`, `error`), listens for clicks on the keypad and for key presses, and writes to the display.
 - Both are classic scripts loaded with `defer`. ES modules would be blocked when `index.html` is opened from disk.
 
-The first version computed the result with `eval()`. That let JavaScript syntax leak into the calculator: `010+1` was 9 (octal), `5//2` was 5 (a comment), `1/0` was `Infinity`, and "=" on an empty display showed `undefined`. These cases are now tests in `test/calculator.test.js`.
+The first version computed the result with `eval()`. That let JavaScript syntax leak into the calculator: `010+1` was 9 (octal), `5//2` was 5 (a comment), `1/0` was `Infinity`, and `=` on an empty display showed `undefined`. These cases are now tests in `test/calculator.test.js`.
 
 ## What I learned
 
