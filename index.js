@@ -1,24 +1,23 @@
-//Fetch the HTML input field
+// Holds the expression while typing and the result after "=".
 const display = document.getElementById("display");
-//input as a parameter for the buttons entered by the user
+
 function appendToDisplay(input){
-    //Add the saved string in the linked function from the button
-    //to the input field
     display.value += input;
 }
-//Implementation of the C button (Cancel)
+
+// The "C" key: clear.
 function clearDisplay(){
     display.value = "";
 }
-//eval function for the entered values of the user
+
 function calculate(){
     try{
+        // eval() is tolerable only because the display is read-only and
+        // fed by the fixed keypad. See issue #4 for what it gets wrong.
         display.value = eval(display.value);
     }
-    //Try and catch if the user makes mistakes, e.g. '7+ (presses '=')'
-    //then display error inside the input field
     catch(error){
+        // Incomplete or malformed expression, e.g. "7+".
         display.value = "Error";
     }
-
 }

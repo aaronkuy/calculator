@@ -13,6 +13,8 @@
     --shadow: 0 1px 2px rgba(20, 22, 28, 0.04), 0 8px 24px rgba(20, 22, 28, 0.06);
 }
 
+/* Base */
+
 * {
     box-sizing: border-box;
 }
@@ -33,6 +35,8 @@ body {
 button {
     font: inherit;
 }
+
+/* Footer */
 
 .footer {
     margin-top: auto;
@@ -106,7 +110,8 @@ button {
     transform: scale(0.97);
 }
 
-/* Operators: + - * / */
+/* Operators sit in the first column. The "C" key is also a first-column
+   child, so its rule further down has to override this one. */
 #keys button:nth-child(4n + 1) {
     border-color: transparent;
     background: var(--accent-soft);
