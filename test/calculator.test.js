@@ -115,9 +115,40 @@ test("appendKey ignores keys it does not know", () => {
     assert.equal(appendKey("7", "("), "7");
 });
 
-test("everything appendKey lets through is either valid or just incomplete", () => {
+test("what appendKey lets through evaluates like plain arithmetic", () => {
     assert.equal(calc(type("7*-2+0.5")), "-13.5");
     assert.equal(calc(type("010+1")), "11");
     assert.equal(calc(type("5//2")), "2.5");
     assert.equal(calc(type("7**2")), "14");
+});
+
+test("no sequence of up to four key presses leaves the calculator in an undefined state", () => {
+    // Every expression that can be typed must end in one of three ways:
+    // a finite number, a RangeError (division by zero), or a SyntaxError
+    // because the expression is not finished yet (empty, ends in an
+    // operator, or contains a "." without a digit).
+    const KEYS = [..."0123456789.+-*/"];
+    const unfinished = /^$|[-+*/]$|(^|[-+*/])\.($|[-+*/])/;
+    let checked = 0;
+
+    function visit(expression, pressesLeft) {
+        checked += 1;
+        try {
+            assert.ok(Number.isFinite(evaluate(expression)), expression);
+        } catch (error) {
+            if (error instanceof SyntaxError) {
+                assert.match(expression, unfinished);
+            } else {
+                assert.ok(error instanceof RangeError, `${expression}: ${error}`);
+                assert.match(expression, /\//);
+            }
+        }
+        if (pressesLeft === 0) return;
+        for (const key of KEYS) {
+            visit(appendKey(expression, key), pressesLeft - 1);
+        }
+    }
+
+    visit("", 4);
+    assert.equal(checked, 1 + 15 + 15 ** 2 + 15 ** 3 + 15 ** 4);
 });
