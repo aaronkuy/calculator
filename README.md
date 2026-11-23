@@ -38,6 +38,13 @@ open index.html        # macOS; on Linux use xdg-open, on Windows start
 - Keyboard input
 - Show the running expression above the result
 
+## Credits
+
+The keypad markup and the original display logic follow Bro Code's tutorial
+["Build this JS calculator in 15 minutes!"](https://www.youtube.com/watch?v=I5kj-YsmWjM).
+The stylesheet in this repository is a different one from the tutorial's.
+
 ## License
 
-See [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE). It applies to the changes made in this repository;
+the tutorial it started from is credited above.
