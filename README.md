@@ -2,13 +2,13 @@
 
 A browser calculator for the four basic operations, usable with the mouse or the keyboard.
 
-![Screenshot of Calculator](docs/screenshot.png)
+![Screenshot of Calculator](docs/screenshot-2026-11.png)
 
 ## Features
 
 - Addition, subtraction, multiplication and division with the usual precedence (`2+3*4` is 14)
 - Decimals and negative numbers (`7*-2`)
-- Keyboard input: digits and `+ - * / .`, `Enter` or `=` to calculate, `Backspace` to delete, `Escape` to clear
+- Keyboard input: digits and `+ - * / .` (a comma works as the decimal point too), `Enter` or `=` to calculate, `Backspace` to delete, `Escape` to clear
 - Shows "Error" for an incomplete expression (`7+`) and for division by zero
 - After a result, a digit starts a new calculation and an operator continues with the result
 
@@ -59,7 +59,7 @@ The first version computed the result with `eval()`. That let JavaScript syntax 
 
 The keypad layout and the first version of the display logic follow Bro Code's tutorial
 ["Build this JS calculator in 15 minutes!"](https://www.youtube.com/watch?v=I5kj-YsmWjM).
-The stylesheet is a different one from the tutorial's. The `eval()` call from the tutorial
+The stylesheet is not the tutorial's. The `eval()` call from the tutorial
 has since been replaced by the parser described above, and keyboard input and tests were added.
 
 ## License
